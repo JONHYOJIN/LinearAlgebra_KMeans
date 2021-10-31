@@ -3,12 +3,13 @@ import numpy as np
 
 class KMeans_DF:
     def __init__(self):
-        self.path_xlsx = '/Users/hyojin/LinearAlgebra_KMeans/KMeans Data/termDocMatrix.xlsx'
-        self.path_txt  = '/Users/hyojin/LinearAlgebra_KMeans/KMeans Data/word-docTitle.txt'
+        self.path_xlsx = './KMeans Data/termDocMatrix.xlsx'
+        self.path_txt  = './KMeans Data/word-docTitle.txt'
     def get_DF(self):
         rows, columns = self.get_rowcol()
-        data = pd.read_excel('/Users/hyojin/LinearAlgebra_KMeans/KMeans Data/termDocMatrix.xlsx',header=None,index_col=0,names = columns)
+        data = pd.read_excel(self.path_xlsx,header=None,index_col=0,names = columns)
         data.index = rows
+        data.loc['cluster']=0
         return data
     def get_rowcol(self):
         worddoc = []
